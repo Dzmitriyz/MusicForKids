@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements Postman{
     @Override
     public void framentMail(int numberOfClick){
         TextView textView = findViewById(R.id.textSongId);
-        String message = "Была выбрана песня под номером "+numberOfClick;
+        String message = "номер "+numberOfClick;
         textView.setText(message);
 
     }
