@@ -10,11 +10,11 @@ public class MusicList {
     }
 
     public static final MusicList[] list_Music ={
-            new MusicList("Синий трактор", R.drawable.blue_track,R.raw.blue_track,"blackplush"),
-            new MusicList("Чебурашка", R.drawable.chebyrashka, R.raw.cheburashka,"blue_track"),
-            new MusicList("Черный плащь", R.drawable.dwduck,R.raw.blackplush,"cheburashka"),
-            new MusicList("Акуленнок", R.drawable.shark_kid,R.raw.shark,"shark"),
-            new MusicList("Тимон и пубма", R.drawable.timon_and_pumba, R.raw.timon_i_pumba,"timon_i_pumba")
+            new MusicList("Синий трактор", R.drawable.blue_track,R.raw.blue_track,"blue_track"),
+            new MusicList("Чебурашка", R.drawable.chebyrashka, R.raw.cheburashka,"cheburashka"),
+            new MusicList("Черный плащ", R.drawable.dwduck,R.raw.blackplush,"blackplush"),
+            new MusicList("Акуленок", R.drawable.shark_kid,R.raw.shark,"shark"),
+            new MusicList("Тимон и пумба", R.drawable.timon_and_pumba, R.raw.timon_i_pumba,"timon_i_pumba")
 
     };
     MusicList(String Song, int picSong, int songId, String rawString){

@@ -2,4 +2,8 @@
     <string name="app_name">MusicForKids</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="music">Музыка</string>
+    <string name="how_say">Кто это говорит?</string>
+    <string name="how_say_it">Угадай кто</string>
 </resources>
