@@ -30,8 +30,6 @@ public class AdapterWhySay extends RecyclerView.Adapter<AdapterWhySay.ViewHolder
     public AdapterWhySay(String[] name, int[] imageAnimal){
         this.nameAnimal=name;
         this.imageAnimal=imageAnimal;
-        //this.soundAnimal=soundAnimal;
-
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

@@ -40,8 +40,6 @@ public class WhoSayFragment extends Fragment {
                  (ClassCastException ignored){}
             }
         });
-
-
         return whyS;
 
     }

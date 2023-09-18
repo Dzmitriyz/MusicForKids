@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
             animalSound[i]=SoundAnimalsList.soundAnimalList[i].getSoundAnimal();
         }
         int animal = getResources().getIdentifier(animalSound[numberSound],"raw",getPackageName());
-        Log.d("animal", "111rere");
         MediaClass(animal);
     }
 
@@ -98,12 +97,6 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
             mediaPlayer.stop();
         }
     }
-
-
-
-
-
-
     private class SectionsPagerAdapter extends FragmentPagerAdapter{
 
         public SectionsPagerAdapter( FragmentManager fm) {
