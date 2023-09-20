@@ -11,8 +11,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -21,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
     public static int EXTRA_SONG_ID = 0;
     public static MediaPlayer mediaPlayer;
     private LinearLayout liner;
+    private TextView txtSound;
+    private Button btnF1, btnF2;
     private MusicList list = new MusicList();
     ImageButton imageButtonPlay, imageButtonStop;
 
@@ -32,15 +36,16 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
         CustomViewPager pager = (CustomViewPager) findViewById(R.id.musciFragment);
         pager.setAdapter(pagerAdapter);
         liner = (LinearLayout)findViewById(R.id.main_liner);
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(pager);
 
         Fragment fragment = new MusicFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.musciFragment, fragment);
         ft.commit();
+        txtSound = findViewById(R.id.textSongId);
         imageButtonPlay = findViewById(R.id.ButtonPlay);
         imageButtonStop = findViewById(R.id.ButtonStop);
+        btnF1 = findViewById(R.id.btnFisrtActivity);
+        btnF2 = findViewById(R.id.btnSecondActivity);
 
         imageButtonPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +64,14 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
                 }
             }
         });
+        btnF2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, WhySayActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -69,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
             rawString[i] = MusicList.list_Music[i].getRawString();
         }
         int test = getResources().getIdentifier(rawString[numberOfClick], "raw", getPackageName());
+        txtSound.setText(test);
         MediaClass(test);
 
     }
@@ -94,7 +108,8 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
 
     public void MediaClassStop() {
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
+            mediaPlayer.pause();
+
         }
     }
     private class SectionsPagerAdapter extends FragmentPagerAdapter{
