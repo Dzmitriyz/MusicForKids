@@ -22,8 +22,10 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
 
     public static int EXTRA_SONG_ID = 0;
     public static MediaPlayer mediaPlayer;
+    private int globalInt=R.raw.blue_track;
     private LinearLayout liner;
     private TextView txtSound;
+    boolean ButtonPlay = false;
     private Button btnF1, btnF2;
     private MusicList list = new MusicList();
     ImageButton imageButtonPlay, imageButtonStop;
@@ -43,24 +45,21 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
         ft.commit();
         txtSound = findViewById(R.id.textSongId);
         imageButtonPlay = findViewById(R.id.ButtonPlay);
-        imageButtonStop = findViewById(R.id.ButtonStop);
         btnF1 = findViewById(R.id.btnFisrtActivity);
         btnF2 = findViewById(R.id.btnSecondActivity);
 
         imageButtonPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mediaPlayer == null) {
-                    mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.timon_i_pumba);
+                if (mediaPlayer == null){
+                    MediaClass(globalInt);
+                    imageButtonPlay.setImageResource(R.drawable.pause);
+                }else if (mediaPlayer.isPlaying()) {
+                    MediaClassStop();
+                    imageButtonPlay.setImageResource(R.drawable.play);
+                }else if (mediaPlayer != null){
                     mediaPlayer.start();
-                }
-            }
-        });
-        imageButtonStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mediaPlayer.isPlaying()) {
-                    mediaPlayer.pause();
+                    imageButtonPlay.setImageResource(R.drawable.pause);
                 }
             }
         });
@@ -77,12 +76,15 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
 
     @Override
     public void framentMail(int numberOfClick) {
+        globalInt = numberOfClick;
         String[] rawString = new String[MusicList.list_Music.length];
         for (int i = 0; i < rawString.length; i++) {
             rawString[i] = MusicList.list_Music[i].getRawString();
         }
         int test = getResources().getIdentifier(rawString[numberOfClick], "raw", getPackageName());
-        txtSound.setText(test);
+        txtSound.setText(MusicList.list_Music[numberOfClick].getNameSong());
+        imageButtonPlay.setImageResource(R.drawable.pause);
+        ButtonPlay=true;
         MediaClass(test);
 
     }
@@ -100,16 +102,15 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
 
     public void MediaClass(int test) {
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
+            mediaPlayer.pause();
         }
         mediaPlayer =MediaPlayer.create(this, test);
         mediaPlayer.start();
     }
 
     public void MediaClassStop() {
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+        if (mediaPlayer != null) {
             mediaPlayer.pause();
-
         }
     }
     private class SectionsPagerAdapter extends FragmentPagerAdapter{

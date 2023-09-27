@@ -34,8 +34,8 @@
 
         <com.example.musicforkids.CustomViewPager
             android:id="@+id/musciFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"  />
+            android:layout_width="413dp"
+            android:layout_height="481dp"  />
 
 
         <LinearLayout

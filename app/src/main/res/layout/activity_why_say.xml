@@ -22,16 +22,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Музыка"
-            android:textSize="20dp" />
+            android:text="@string/music"
+            android:textSize="16dp" />
 
         <Button
             android:id="@+id/btnSecondActivity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Угадай кто?"
-            android:textSize="20dp" />
+            android:text="@string/how_say"
+            android:textSize="16dp" />
     </LinearLayout>
 
 
