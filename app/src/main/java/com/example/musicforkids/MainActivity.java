@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
         btnF2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MediaClassStop();
                 Intent intent = new Intent(MainActivity.this, WhySayActivity.class);
                 startActivity(intent);
             }

@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="16dp"
-            android:text="@string/music" />
+            android:text="2" />
         <Button
             android:id="@+id/btnSecondActivity"
             android:layout_width="0dp"
@@ -34,7 +34,7 @@
 
         <com.example.musicforkids.CustomViewPager
             android:id="@+id/musciFragment"
-            android:layout_width="413dp"
+            android:layout_width="match_parent"
             android:layout_height="481dp"  />
 
 

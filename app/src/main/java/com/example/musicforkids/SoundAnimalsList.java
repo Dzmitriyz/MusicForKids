@@ -8,7 +8,8 @@ public class SoundAnimalsList {
     public static final SoundAnimalsList[] soundAnimalList={
             new SoundAnimalsList("Кошка",R.drawable.cat,"cat"),
             new SoundAnimalsList("Собачка",R.drawable.dog,"dog"),
-            new SoundAnimalsList("Корова",R.drawable.cow,"cow")
+            new SoundAnimalsList("Корова",R.drawable.cow,"cow"),
+            new SoundAnimalsList("Даша",R.drawable.daria, "daria")
     };
 
     SoundAnimalsList(String name, int image, String sound){

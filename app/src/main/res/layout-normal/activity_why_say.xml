@@ -21,18 +21,22 @@
         <Button
             android:id="@+id/btnFisrtActivity"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="@string/music"
-            android:textSize="16dp" />
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/btnSecondActivity"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="@string/how_say"
-            android:textSize="16dp" />
+            android:textSize="12dp" />
     </LinearLayout>
 
 
@@ -47,7 +51,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
-
 
 
     <ImageButton
@@ -102,11 +105,13 @@
         android:id="@+id/counText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Test"
+        android:text=""
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/Image"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnMinus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

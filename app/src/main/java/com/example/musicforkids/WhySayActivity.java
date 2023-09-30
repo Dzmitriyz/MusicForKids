@@ -10,17 +10,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class WhySayActivity extends AppCompatActivity {
+
     private ImageView imageView;
+    private TextView countText;
     private  MediaPlayer mediaPlayer;
     int[] listImage = new int[SoundAnimalsList.soundAnimalList.length];
     int[]  sound = new int[SoundAnimalsList.soundAnimalList.length];
     String[] soundAnimal = new String[SoundAnimalsList.soundAnimalList.length];
-    Button btnPlus, btnMinus,btnFirstActivity,btnSecondActivity;
-    ImageButton btnPlay;
+    Button btnFirstActivity,btnSecondActivity;
+    ImageButton btnPlus, btnMinus,btnPlay;
     private static int imageCount =0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +33,16 @@ public class WhySayActivity extends AppCompatActivity {
         btnPlay = findViewById(R.id.btnSound);
         btnFirstActivity = findViewById(R.id.btnFisrtActivity);
         btnSecondActivity = findViewById(R.id.btnSecondActivity);
-        btnPlus = (Button) findViewById(R.id.btbPlus);
-        btnMinus = (Button) findViewById(R.id.btnMinus);
+        btnPlus = (ImageButton) findViewById(R.id.btnPlus);
+        btnMinus = (ImageButton) findViewById(R.id.btnMinus);
+        countText = (TextView) findViewById(R.id.counText);
+
 
         for(int i=0; i<listImage.length; i++){
             listImage[i]=SoundAnimalsList.soundAnimalList[i].getImageAnimal();
             sound[i] = getResources().getIdentifier(soundAnimal[i]=SoundAnimalsList.soundAnimalList[i].getSoundAnimal(),"raw",getPackageName());
         }
+        countText.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal()+" \n "+(imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
         imageView.setImageResource(listImage[0]);
         btnFirstActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,30 +54,44 @@ public class WhySayActivity extends AppCompatActivity {
         btnSecondActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(WhySayActivity.this,"okokok",Toast.LENGTH_SHORT).show();
+                Toast.makeText(WhySayActivity.this,"O_O",Toast.LENGTH_SHORT).show();
             }
         });
 
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("minus", imageCount+"");
-                if(imageCount<listImage.length-1)
-                    imageCount++;
-                Log.d("minus", imageCount+"");
-                imageView.setImageResource(listImage[imageCount]);
+                imageCount++;
+                if(imageCount<=listImage.length-1) {
+                    imageView.setImageResource(listImage[imageCount]);
+                    countText.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal()+" \n "+(imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
+                }
+                if(imageCount==listImage.length){
+                    imageCount=0;
+                    imageView.setImageResource(listImage[imageCount]);
+                    countText.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal()+" \n "+(imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
+                }
 
             }
+
+
         });
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("minus", imageCount+"");
-                if(imageCount>0) {
-                    Log.d("minus", imageCount+"");
-                    imageCount--;
+                Log.d("test ", "befor "+imageCount+"");
+                imageCount--;
+                Log.d("test ", "after "+imageCount+"");
+                if(imageCount>=0) {
                     imageView.setImageResource(listImage[imageCount]);
+                    countText.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal()+" \n "+(imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
                 }
+                if(imageCount==-1) {
+                    imageCount = listImage.length-1;
+                    imageView.setImageResource(listImage[imageCount]);
+                    countText.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal()+" \n "+(imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
+                }
+                Log.d("test ", "end method " +imageCount);
             }
         });
         btnPlay.setOnClickListener(new View.OnClickListener() {

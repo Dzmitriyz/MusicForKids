@@ -21,12 +21,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:textSize="16dp"
             android:text="@string/music" />
         <Button
             android:id="@+id/btnSecondActivity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:textSize="16dp"
             android:text="@string/how_say_it" />
@@ -34,8 +38,9 @@
 
         <com.example.musicforkids.CustomViewPager
             android:id="@+id/musciFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"  />
+            android:layout_width="match_parent"
+            android:layout_height="701dp"
+            android:layout_margin="5dp" />
 
 
         <LinearLayout
@@ -50,7 +55,7 @@
                     android:id="@+id/textSongId"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:text=""
                     android:layout_gravity="center"
                     android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
