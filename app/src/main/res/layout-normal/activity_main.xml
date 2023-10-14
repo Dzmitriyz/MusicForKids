@@ -51,15 +51,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-
                 <TextView
                     android:id="@+id/textSongId"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text=""
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="normal|bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +77,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/ButtonStop"
                     app:srcCompat="@drawable/play" />
+
+
+
 
 
         </LinearLayout>

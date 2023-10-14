@@ -9,7 +9,9 @@ public class SoundAnimalsList {
             new SoundAnimalsList("Кошка",R.drawable.cat,"cat"),
             new SoundAnimalsList("Собачка",R.drawable.dog,"dog"),
             new SoundAnimalsList("Корова",R.drawable.cow,"cow"),
-            new SoundAnimalsList("Даша",R.drawable.daria, "daria")
+            new SoundAnimalsList("Утёнок",R.drawable.duck, "duck"),
+            new SoundAnimalsList("Поросёнок",R.drawable.pig,"pig"),
+            new SoundAnimalsList("Лягушонок",R.drawable.frog,"frog")
     };
 
     SoundAnimalsList(String name, int image, String sound){

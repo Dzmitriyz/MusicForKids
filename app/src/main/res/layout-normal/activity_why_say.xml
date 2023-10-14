@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".WhySayActivity">
 
     <LinearLayout
@@ -44,12 +45,12 @@
         android:id="@+id/Image"
         android:layout_width="315dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="148dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/btnSound"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
 
@@ -63,7 +64,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.050"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/backward"
 
@@ -79,7 +80,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.768"
+        app:layout_constraintHorizontal_bias="0.950"
         app:layout_constraintStart_toEndOf="@+id/btnSound"
         app:layout_constraintTop_toTopOf="@+id/btnMinus"
         app:layout_constraintVertical_bias="0.0"
@@ -89,29 +90,44 @@
         android:id="@+id/btnSound"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="72dp"
         android:adjustViewBounds="true"
         android:background="@color/white"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/Image"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnMinus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnMinus"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/sound" />
 
     <TextView
+        android:id="@+id/counTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="111111111111"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnSound"
+        app:layout_constraintEnd_toEndOf="@+id/btnSound"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/btnSound"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.969" />
+
+    <TextView
         android:id="@+id/counText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="TextView"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnMinus"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.09" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

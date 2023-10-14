@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class WhySayActivity extends AppCompatActivity {
 
     private ImageView imageView;
-    private TextView countText;
+    private TextView countText, countTextName;
     private  MediaPlayer mediaPlayer;
     int[] listImage = new int[SoundAnimalsList.soundAnimalList.length];
     int[]  sound = new int[SoundAnimalsList.soundAnimalList.length];
@@ -28,6 +28,7 @@ public class WhySayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_MusicForKids);
         setContentView(R.layout.activity_why_say);
         imageView = findViewById(R.id.Image);
         btnPlay = findViewById(R.id.btnSound);
@@ -36,13 +37,15 @@ public class WhySayActivity extends AppCompatActivity {
         btnPlus = (ImageButton) findViewById(R.id.btnPlus);
         btnMinus = (ImageButton) findViewById(R.id.btnMinus);
         countText = (TextView) findViewById(R.id.counText);
+        countTextName = (TextView) findViewById(R.id.counTextName);
 
 
         for(int i=0; i<listImage.length; i++){
             listImage[i]=SoundAnimalsList.soundAnimalList[i].getImageAnimal();
             sound[i] = getResources().getIdentifier(soundAnimal[i]=SoundAnimalsList.soundAnimalList[i].getSoundAnimal(),"raw",getPackageName());
         }
-        countText.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal()+" \n "+(imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
+        countTextName.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal());
+        countText.setText((imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
         imageView.setImageResource(listImage[0]);
         btnFirstActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +67,14 @@ public class WhySayActivity extends AppCompatActivity {
                 imageCount++;
                 if(imageCount<=listImage.length-1) {
                     imageView.setImageResource(listImage[imageCount]);
-                    countText.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal()+" \n "+(imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
+                    countTextName.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal());
+                    countText.setText((imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
                 }
                 if(imageCount==listImage.length){
                     imageCount=0;
                     imageView.setImageResource(listImage[imageCount]);
-                    countText.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal()+" \n "+(imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
+                    countTextName.setText(SoundAnimalsList.soundAnimalList[imageCount].getNameAnimal());
+                    countText.setText((imageCount+1)+"/"+SoundAnimalsList.soundAnimalList.length);
                 }
 
             }

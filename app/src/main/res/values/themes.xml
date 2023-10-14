@@ -13,4 +13,10 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="splashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="postSplashScreenTheme">@style/Theme.AppCompat.DayNight</item>
+        <item name="android:windowBackground">@drawable/ic_log</item>
+    </style>
 </resources>

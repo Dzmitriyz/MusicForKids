@@ -7,6 +7,7 @@
     android:id="@+id/cardView"
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
+    android:background="@color/white"
     android:layout_marginBottom="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginLeft="5dp"
@@ -15,7 +16,7 @@
     >
 
         <LinearLayout
-            android:layout_width="100dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@color/white"
@@ -25,15 +26,14 @@
 
             <ImageView
                 android:id="@+id/imageMusic"
-                android:layout_width="84dp"
-                android:layout_height="80dp"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
-                app:strokeColor="@color/black"
+                app:strokeColor="@color/white"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <TextView
@@ -43,6 +43,8 @@
                 android:gravity="center"
                 android:text="test"
                 android:textColor="@color/black"
+                android:background="@color/white"
+                android:paddingBottom="10sp"
                 android:textSize="15sp"
                 android:textStyle="bold" />
         </LinearLayout>

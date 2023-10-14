@@ -28,11 +28,12 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
     boolean ButtonPlay = false;
     private Button btnF1, btnF2;
     private MusicList list = new MusicList();
-    ImageButton imageButtonPlay, imageButtonStop;
+    ImageButton imageButtonPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_MusicForKids);
         setContentView(R.layout.activity_main);
         SectionsPagerAdapter pagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         CustomViewPager pager = (CustomViewPager) findViewById(R.id.musciFragment);
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
         imageButtonPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("ddd", "onClick btnPlay");
                 if (mediaPlayer == null){
                     MediaClass(globalInt);
                     imageButtonPlay.setImageResource(R.drawable.pause);
