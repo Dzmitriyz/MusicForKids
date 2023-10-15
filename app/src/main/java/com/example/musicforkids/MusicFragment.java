@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,8 @@ public class MusicFragment extends Fragment {
         }
         AdapterMusic adapter = new AdapterMusic(nameMusic,imageSong);
         musicRecycler.setAdapter(adapter);
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
+        //GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         musicRecycler.setLayoutManager(layoutManager);
         adapter.setListener(new AdapterMusic.Listener() {
             @Override

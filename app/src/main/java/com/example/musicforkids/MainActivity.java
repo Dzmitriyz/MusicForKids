@@ -14,21 +14,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity implements Postman, AnimalSound{
+import java.util.Timer;
+import java.util.TimerTask;
 
-    public static int EXTRA_SONG_ID = 0;
+public class MainActivity extends AppCompatActivity implements Postman, AnimalSound, SeekBar.OnSeekBarChangeListener {
+
     public static MediaPlayer mediaPlayer;
     private int globalInt=R.raw.blue_track;
     private LinearLayout liner;
-    private TextView txtSound;
+    private TextView txtSound,txtStartSong,txtEndSong;
     boolean ButtonPlay = false;
     private Button btnF1, btnF2;
+    private SeekBar seekBar;
     private MusicList list = new MusicList();
-    ImageButton imageButtonPlay;
+    private ImageButton imageButtonPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +48,8 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.musciFragment, fragment);
         ft.commit();
-        txtSound = findViewById(R.id.textSongId);
-        imageButtonPlay = findViewById(R.id.ButtonPlay);
-        btnF1 = findViewById(R.id.btnFisrtActivity);
-        btnF2 = findViewById(R.id.btnSecondActivity);
+        init();
+
 
         imageButtonPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,16 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
             }
         });
 
+    }
+
+    private void init(){
+        txtSound = findViewById(R.id.textSongId);
+        imageButtonPlay = findViewById(R.id.ButtonPlay);
+        btnF1 = findViewById(R.id.btnFisrtActivity);
+        btnF2 = findViewById(R.id.btnSecondActivity);
+        txtStartSong = findViewById(R.id.txtStartSong);
+        txtEndSong = findViewById(R.id.txtEndSong);
+        seekBar = findViewById(R.id.seekBar);
     }
 
 
@@ -108,14 +120,60 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
             mediaPlayer.pause();
         }
         mediaPlayer =MediaPlayer.create(this, test);
+        String duration = millisecondToString(mediaPlayer.getDuration());
+        Log.d("MyLog ",duration);
+        txtStartSong.setText(duration);
         mediaPlayer.start();
+        getSeekBarStatus();
     }
+
+    private void getSeekBarStatus(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int currentPosisiton=0;
+                int total =mediaPlayer.getDuration();
+                seekBar.setMax(total);
+                while (mediaPlayer != null && currentPosisiton < total){
+                    try {
+                        Thread.sleep(1000);
+                        currentPosisiton = mediaPlayer.getCurrentPosition();
+                    }catch (InterruptedException e){
+                        return;
+                    }
+                    seekBar.setProgress(currentPosisiton);
+                }
+            }
+        }).start();
+    }
+
+
 
     public void MediaClassStop() {
         if (mediaPlayer != null) {
             mediaPlayer.pause();
         }
     }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if(fromUser){
+            mediaPlayer.seekTo(progress);
+            seekBar.setProgress(progress);
+        }
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
+
+
     private class SectionsPagerAdapter extends FragmentPagerAdapter{
 
         public SectionsPagerAdapter( FragmentManager fm) {
@@ -153,4 +211,26 @@ public class MainActivity extends AppCompatActivity implements Postman, AnimalSo
             return null;
         }
     }
+
+    public String millisecondToString(int time){
+        String elapsedTime = "";
+        int minutes = time/1000/60;
+        int seconds = time/1000 % 60;
+        elapsedTime = minutes+":";
+        if(seconds<10){
+            elapsedTime+="0";
+        }else{
+            elapsedTime+=seconds;
+        }
+        return elapsedTime;
+    }
+
+    @Override
+    protected void onStop( ){
+        super.onStop();
+        MediaClassStop();
+        imageButtonPlay.setImageResource(R.drawable.play);
+    }
+
+
 }

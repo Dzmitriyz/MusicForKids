@@ -5,7 +5,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/cardView"
-    app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
     android:background="@color/white"
     android:layout_marginBottom="10dp"
@@ -26,11 +25,10 @@
 
             <ImageView
                 android:id="@+id/imageMusic"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
-                android:layout_marginLeft="10dp"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
                 app:strokeColor="@color/white"
